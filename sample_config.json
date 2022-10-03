@@ -1,0 +1,24 @@
+{
+  "base_url": "https://test.com",
+  "resource": "/v1/company",
+  "api_key": "test",
+  "reports": [
+    {
+      "name": "bydate",
+      "key_properties": [
+        "id",
+        "delivery_date"
+      ],
+      "properties": [
+        {
+          "name": "id",
+          "type": "integer"
+        },
+        {
+          "name": "delivery_date",
+          "type": "date"
+        }
+      ]
+    }
+  ]
+}
