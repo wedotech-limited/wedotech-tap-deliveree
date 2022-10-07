@@ -1,14 +1,11 @@
 {
   "base_url": "https://test.com",
-  "resource": "/v1/company",
   "api_key": "test",
   "reports": [
     {
+      "resource": "/v1/company",
       "name": "bydate",
-      "key_properties": [
-        "id",
-        "delivery_date"
-      ],
+      "key_properties": ["id", "delivery_date"],
       "properties": [
         {
           "name": "id",
