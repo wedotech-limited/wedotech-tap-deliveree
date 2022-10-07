@@ -1,11 +1,13 @@
 from datetime import datetime, timedelta
 
 PARAMETER_PARSERS = {
-  "CURRENT_DATE": lambda v: datetime.now().strftime("%Y-%m-%d"),
-  "PREVIOUS_DATE": lambda v: (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d"),
-  "CURRENT_TIMESTAMP": lambda v: datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-  "PREVIOUS_TIMESTAMP": lambda v: (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d %H:%M:%S"),
+    "CURRENT_DATE": lambda v: datetime.now().strftime("%Y-%m-%d"),
+    "PREVIOUS_DATE": lambda v: (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d"),
+    "CURRENT_TIMESTAMP": lambda v: datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+    "PREVIOUS_TIMESTAMP": lambda v:
+                          (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d %H:%M:%S"),
 }
+
 
 def parse_parameter_value(value):
     """
@@ -15,11 +17,16 @@ def parse_parameter_value(value):
         return PARAMETER_PARSERS[value](value)
     return value
 
+
 def parse_parameters(parameters: dict):
     """
     Parse the parameters from the config and return a dictionary of parameters
     """
     params = {}
+
+    if parameters is None or not isinstance(parameters, dict):
+        return params
+
     for param, value in parameters.items():
         params[param] = parse_parameter_value(value)
     return params
